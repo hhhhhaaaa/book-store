@@ -13,7 +13,7 @@ const add = (bookInfo) => {
       console.error({message: 'add query failed',
                      error: error.stack,
                      arguments: [bookInfo]});
-      throw error
+      throw error;
    });
 };
 
@@ -22,7 +22,7 @@ const getAll = () => {
   .catch(error => {
     console.error({message: 'getAll query failed',
                    error: error.stack});
-    throw error
+    throw error;
  });
 };
 
@@ -32,7 +32,7 @@ const getById = (id) => {
     console.error({message: 'getById query failed',
                    error: error.stack,
                    arguments: [id]});
-    throw error
+    throw error;
  });
 };
 
@@ -49,7 +49,7 @@ const update = (id, newBookInfo) => {
       console.error({message: 'update query failed',
                      error: error.stack,
                      arguments: [id, newBookInfo]});
-      throw error
+      throw error;
    });
 };
 
@@ -59,7 +59,7 @@ const deleteById = (id) => {
     console.error({message: 'deleteById query failed',
                    error: error.stack,
                    arguments: [id]});
-    throw error
+    throw error;
  });
 };
 
@@ -94,7 +94,7 @@ const searchByColumn = (bookInfo) => {
     console.error({message: 'searchByColumn query failed',
                    error: error.stack,
                    arguments: [bookInfo]});
-    throw error
+    throw error;
  });
 };
 
