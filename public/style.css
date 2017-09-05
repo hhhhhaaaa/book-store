@@ -1,0 +1,48 @@
+html {
+  background-color: rgb(215, 184, 19);
+}
+
+body {
+  background-color: rgb(233, 222, 160);
+  margin-left: 400px;
+  margin-right: 400px;
+}
+
+/*Flex Modifiers*/
+.flex {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-full {
+  flex: 11;
+}
+
+/*Page Entries*/
+.books-list {
+  justify-content: space-around;
+}
+
+.edit-form {
+  display: none;
+}
+
+.navbar {
+  flex: 1;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.pagination {
+  flex: 1;
+  justify-content: space-around;
+  align-items: center;
+}

@@ -1,0 +1,6 @@
+nav.navbar.flex.flex-row
+  a(href='/books') Home
+  a(href='/books/new') New Book
+  form(action="/books/search", method="GET")
+    input(type="search", name="searchTerms")
+    input(type="submit", value="Search")

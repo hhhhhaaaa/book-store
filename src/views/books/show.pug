@@ -1,0 +1,20 @@
+extends /partials/layout
+
+block content
+  div.book-display.flex-full
+    ul
+      li=book.title
+      li=book.author
+      li=book.genre
+      button.edit-btn Edit
+      form(action=`/books/${book.id}?_method=DELETE`, method="POST")
+        button.delete-btn Delete
+  div.edit-form.flex-full
+    form(action=`/books/${book.id}?_method=PUT`, method="POST")
+      label Title
+        input(type="text", name="title", value=`${book.title}`)
+      label Author
+        input(type="text", name="author", value=`${book.author}`)
+      label Genre
+        input(type="text", name="genre", value=`${book.genre}`)
+      input.save-btn(type="submit", value="Save")

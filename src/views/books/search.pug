@@ -1,0 +1,7 @@
+extends /partials/layout
+
+block content
+  ul.flex-full
+    each book in matchingBooks
+      a(href='/books/' + book.id)
+        li=book.title
