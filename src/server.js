@@ -1,8 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const routes = require('./server/routes');
 const methodOverride = require('method-override');
 const path = require('path');
+const routes = require('./server/routes');
+const Config = require('./config/config');
+const config = Config.getConfig();
 
 const app = express();
 
@@ -15,14 +17,14 @@ app.locals.basedir = path.join(__dirname, '/views');
 app.use(express.static('public'));
 
 //Middleware
-app.use(bodyParser.urlencoded({ extended: true })); //still don't know why true or false
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
 //Routes
 app.use('/', routes);
 
 
-const port = process.env.PORT || 3000;
+const port = config.port || 3000;
 app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
+  console.log(`Listening on Port ${port}`);
 });

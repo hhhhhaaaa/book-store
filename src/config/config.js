@@ -7,8 +7,7 @@ module.exports = (function() {
 
   const makeConfig = () => {
     if (getEnv() === 'development') {
-      require('dotenv').config({path: __dirname + '/../../.env'});
-    } else if (getEnv() === 'testing') {
+      console.log("Entering Development.");
       require('dotenv').config({path: __dirname + '/../../.env'});
     }
 
@@ -17,14 +16,20 @@ module.exports = (function() {
         host: process.env.DB_HOST,
         port: process.env.DB_PORT,
         name: process.env.DB_NAME
-      }
+      },
+      port: process.env.PORT
     };
     return config;
   };
+
+  const getConfig = () => {
+    return config;
+  };
+
   makeConfig();
 
   return {
-    makeConfig,
-    getEnv
+    getEnv,
+    getConfig
   };
 })();

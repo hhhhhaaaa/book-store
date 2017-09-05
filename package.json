@@ -5,20 +5,20 @@
   "main": "server.js",
   "scripts": {
     "test": "mocha",
-    "start": "nodemon src/server.js",
+    "start": "NODE_ENV=development nodemon src/server.js",
     "db:reset": "dropdb bookstore_development; createdb bookstore_development; psql bookstore_development < src/models/db/schema/schema.sql; psql bookstore_development < src/models/db/schema/load-data.sql",
     "test:db:reset": "dropdb bookstore_test; createdb bookstore_test; psql bookstore_test < src/models/db/schema/schema.sql; psql bookstore_test < src/models/db/schema/load-data.sql"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SomayaB/book-store.git"
+    "url": "git+https://github.com/hhhhhaaaa/book-store.git"
   },
   "author": "Somaya Bounouar & Doug Lubaway",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SomayaB/book-store/issues"
+    "url": "https://github.com/hhhhhaaaa/book-store/issues"
   },
-  "homepage": "https://github.com/SomayaB/book-store#readme",
+  "homepage": "https://github.com/hhhhhaaaa/book-store#readme",
   "dependencies": {
     "body-parser": "^1.17.2",
     "dotenv": "^4.0.0",

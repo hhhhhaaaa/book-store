@@ -1,9 +1,9 @@
 html {
-  background-color: rgb(215, 184, 19);
+  background-color: rgb(201, 201, 201);
 }
 
 body {
-  background-color: rgb(233, 222, 160);
+  background-color: rgb(255, 255, 255);
   margin-left: 400px;
   margin-right: 400px;
 }
@@ -36,13 +36,13 @@ body {
 }
 
 .navbar {
+  align-items: center;
   flex: 1;
   justify-content: space-around;
-  align-items: center;
 }
 
 .pagination {
+  align-items: center;
   flex: 1;
   justify-content: space-around;
-  align-items: center;
 }

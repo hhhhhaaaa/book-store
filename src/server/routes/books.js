@@ -4,27 +4,8 @@ const books = require('../../models/books');
 router.get('/', (request, response) => {
   books.getAll()
   .then(books => {
-    const bookLimit = 10
-    const pageCount = Math.ceil(books.length/bookLimit)
-    let currentPage = 1
-    const booksGroupedByLimit = []
-    let bookList = []
-
-    while (books.length > 0) {
-      booksGroupedByLimit.push(books.splice(0, bookLimit))
-    }
-
-    if (typeof request.query.page !== 'undefined') {
-      currentPage = +request.query.page
-    }
-
-    bookList = booksGroupedByLimit[+currentPage - 1]
     response.render('books/index', {
-      books: bookList,
-      bookLimit: bookLimit,
-      totalBooks: books.length,
-      pageCount: pageCount,
-      currentPage: currentPage
+      books: books
     })
   })
   .catch(error => {
