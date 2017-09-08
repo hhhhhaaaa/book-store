@@ -36,7 +36,6 @@ app.use(methodOverride('_method'));
 //Routes
 app.use('/', routes);
 
-
 const port = config.port || 3000;
 app.listen(port, () => {
   console.log(`Listening on Port ${port}`);
