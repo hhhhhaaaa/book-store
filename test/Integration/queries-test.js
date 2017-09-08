@@ -25,43 +25,91 @@ describe('Testing Queries', function() {
     it('Should get all the books from the database', function() {
       return books.getAll()
         .then(books => {
-          expect(books).to.eql([{id: 1, title: 'Lon Chaney: A Thousand Faces', author: 'Augy Echelle', genre: 'Documentary' }, { id: 2, title: 'Cool School, The', author: 'Gregory de Copeman', genre: 'Documentary' }, { id: 3, title: 'An Apology to Elephants', author: 'Quintin Graser', genre: 'Documentary' }, { id: 4, title: 'Halloween', author: 'Poppy Georghiou', genre: 'Horror' }, { id: 5, title: 'Harry Potter', author: 'J.K. Rowling', genre: 'Magic' } ]);
+          expect(books).to.eql([{
+            id: 1,
+            title: 'Lon Chaney: A Thousand Faces',
+            author: 'Augy Echelle',
+            genre: 'Documentary'
+          }, {
+            id: 2,
+            title: 'Cool School, The',
+            author: 'Gregory de Copeman',
+            genre: 'Documentary'
+          }, {
+            id: 3,
+            title: 'An Apology to Elephants',
+            author: 'Quintin Graser',
+            genre: 'Documentary'
+          }, {
+            id: 4,
+            title: 'Halloween',
+            author: 'Poppy Georghiou',
+            genre: 'Horror'
+          }, {
+            id: 5,
+            title: 'Harry Potter',
+            author: 'J.K. Rowling',
+            genre: 'Magic'
+          }]);
         });
     });
   });
   describe('GetById', function() {
     it('Should get a single book from the database', function() {
-      return books.getById(5)
-      .then(book => {
-        expect(book).to.eql({ id: 5, title: 'Harry Potter', author: 'J.K. Rowling', genre: 'Magic' });
-      });
+      return books.getById(5, {
+          title: 'Harry Potter',
+          author: 'J.K. Rowling',
+          genre: 'Magic'
+        })
+        .then(book => {
+          expect(book).to.eql({
+            id: 5,
+            title: 'Harry Potter',
+            author: 'J.K. Rowling',
+            genre: 'Magic'
+          });
+        });
     });
   });
   describe('Update', function() {
     it('Should update a book from the database', function() {
-      return books.update()
-      .then(updatedBook => {
-        // should return updated book
-      });
+      return books.update(5, {
+          title: 'Harry Bother',
+          author: 'J.K. Bird',
+          genre: 'Math'
+        })
+        .then(updatedBook => {
+          expect(updatedBook).to.eql({
+            id: 5,
+            title: 'Harry Bother',
+            author: 'J.K. Bird',
+            genre: 'Math'
+          });
+        });
     });
   });
   describe('searchByColumn', function() {
     it('Should through the database for a term and return the results', function() {
       return books.search("Harry")
-      .then(matchingBooks => {
-        // should return Harry Potter
-      });
+        .then(matchingBooks => {
+          expect(matchingBooks).to.eql([{
+            id: 5,
+            title: 'Harry Bother',
+            author: 'J.K. Bird',
+            genre: 'Math'
+          }]);
+        });
     });
   });
   describe('DeleteById', function() {
     it('Should delete a book from the database', function() {
-      return books.deleteById()
-      .then(() => {
-        books.getById(5)
-        .then(book => {
-          // should return nothing
-        })
-      });
+      return books.deleteById(5)
+        .then(() => {
+          books.getById(5)
+            .then(book => {
+              expect(book).to.eql(null);
+            });
+        });
     });
   });
 });
