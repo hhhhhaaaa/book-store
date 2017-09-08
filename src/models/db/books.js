@@ -8,7 +8,8 @@ const add = (bookInfo) => {
       ($1, $2, $3)
     RETURNING
       *
-      `, [bookInfo.title, bookInfo.author, bookInfo.genre])
+      `,
+      [bookInfo.title, bookInfo.author, bookInfo.genre])
     .catch(error => {
       console.error({message: 'add query failed',
                      error: error.stack,
@@ -63,8 +64,11 @@ const deleteById = (id) => {
  });
 };
 
+//Fix this search
 const searchByColumn = (bookInfo) => {
   const searchQuery = `%${bookInfo.toLowerCase().replace(/\s+/,'%')}%`;
+  // A more close search query.
+  // const searchQuery = `%${bookInfo.toLowerCase()%`;
   return db.query(`
     SELECT * FROM
       book
@@ -72,24 +76,18 @@ const searchByColumn = (bookInfo) => {
       lower(title)
     LIKE
       $1
-    UNION
-    SELECT * FROM
-      book
-    WHERE
+    OR
       lower(author)
     LIKE
       $1
-    UNION
-    SELECT * FROM
-      book
-    WHERE
+    OR
       lower(genre)
     LIKE
       $1
     ORDER BY
       id
     `,
-  [searchQuery])
+  searchQuery)
   .catch(error => {
     console.error({message: 'searchByColumn query failed',
                    error: error.stack,
