@@ -8,60 +8,70 @@ const add = (bookInfo) => {
       ($1, $2, $3)
     RETURNING
       *
-      `,
-      [bookInfo.title, bookInfo.author, bookInfo.genre])
+      `, [bookInfo.title, bookInfo.author, bookInfo.genre])
     .catch(error => {
-      console.error({message: 'add query failed',
-                     error: error.stack,
-                     arguments: [bookInfo]});
+      console.error({
+        message: 'add query failed',
+        error: error.stack,
+        arguments: [bookInfo]
+      });
       throw error;
-   });
+    });
 };
 
 const getAll = () => {
   return db.query(`SELECT * FROM book ORDER BY id`)
-  .catch(error => {
-    console.error({message: 'getAll query failed',
-                   error: error.stack});
-    throw error;
- });
+    .catch(error => {
+      console.error({
+        message: 'getAll query failed',
+        error: error.stack
+      });
+      throw error;
+    });
 };
 
 const getById = (id) => {
   return db.oneOrNone(`SELECT * FROM book WHERE id=$1`, id)
-  .catch(error => {
-    console.error({message: 'getById query failed',
-                   error: error.stack,
-                   arguments: [id]});
-    throw error;
- });
+    .catch(error => {
+      console.error({
+        message: 'getById query failed',
+        error: error.stack,
+        arguments: [id]
+      });
+      throw error;
+    });
 };
 
 const update = (id, newBookInfo) => {
-  return db.query(`
+  return db.oneOrNone(`
     UPDATE
       book
     SET
       title=$2, author=$3, genre=$4
     WHERE id=$1
-    `,
-    [id, newBookInfo.title, newBookInfo.author, newBookInfo.genre])
+    RETURNING
+    *
+    `, [id, newBookInfo.title, newBookInfo.author, newBookInfo.genre])
     .catch(error => {
-      console.error({message: 'update query failed',
-                     error: error.stack,
-                     arguments: [id, newBookInfo]});
+      console.error({
+        message: 'update query failed',
+        error: error.stack,
+        arguments: [id, newBookInfo]
+      });
       throw error;
-   });
+    });
 };
 
 const deleteById = (id) => {
   return db.query(`DELETE FROM book WHERE id=$1`, id)
-  .catch(error => {
-    console.error({message: 'deleteById query failed',
-                   error: error.stack,
-                   arguments: [id]});
-    throw error;
- });
+    .catch(error => {
+      console.error({
+        message: 'deleteById query failed',
+        error: error.stack,
+        arguments: [id]
+      });
+      throw error;
+    });
 };
 
 //Fix this search
@@ -87,13 +97,15 @@ const searchByColumn = (bookInfo) => {
     ORDER BY
       id
     `,
-  searchQuery)
-  .catch(error => {
-    console.error({message: 'searchByColumn query failed',
-                   error: error.stack,
-                   arguments: [bookInfo]});
-    throw error;
- });
+      searchQuery)
+    .catch(error => {
+      console.error({
+        message: 'searchByColumn query failed',
+        error: error.stack,
+        arguments: [bookInfo]
+      });
+      throw error;
+    });
 };
 
 module.exports = {
