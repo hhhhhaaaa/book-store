@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const books = require('./books');
-const { errorHandler, logErrors, notFoundHandler, setDefaultResponseLocals } = require('../middleware');
+const booksRoute = require('./books');
+const { errorHandler, logErrors, notFoundHandler, setDefaultResponseLocals } = require('../middlewares');
 
 router.use(setDefaultResponseLocals);
 
-router.use('/books', books);
+router.use('/books', booksRoute);
 
 router.get('/', (request, response) => {
   response.redirect('/books');

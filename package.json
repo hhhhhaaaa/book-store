@@ -4,10 +4,11 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "mocha",
-    "start": "NODE_ENV=development nodemon src/server.js",
+    "test": "NODE_ENV=test mocha 'test/**/*.js'",
+    "start": "NODE_ENV=development node src/server.js",
+    "start:dev": "NODE_ENV=development nodemon src/server.js",
     "db:reset": "dropdb bookstore_development; createdb bookstore_development; psql bookstore_development < src/models/db/schema/schema.sql; psql bookstore_development < src/models/db/schema/load-data.sql",
-    "test:db:reset": "dropdb bookstore_test; createdb bookstore_test; psql bookstore_test < src/models/db/schema/schema.sql; psql bookstore_test < src/models/db/schema/load-data.sql"
+    "test:reset": "dropdb bookstore_test; createdb bookstore_test; psql bookstore_test < test/seed/schema.sql"
   },
   "repository": {
     "type": "git",
@@ -25,11 +26,11 @@
     "express": "^4.15.4",
     "method-override": "^2.3.9",
     "pg-promise": "^6.5.1",
-    "pug": "^2.0.0-rc.3",
-    "supertest": "^3.0.0"
+    "pug": "^2.0.0-rc.3"
   },
   "devDependencies": {
     "chai": "^4.1.1",
+    "chai-http": "^3.0.0",
     "mocha": "^3.5.0",
     "nodemon": "^1.11.0"
   }

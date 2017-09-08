@@ -1,5 +1,5 @@
 CREATE TABLE book (
-  id serial PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   title TEXT NOT NULL,
   author TEXT,
   genre TEXT

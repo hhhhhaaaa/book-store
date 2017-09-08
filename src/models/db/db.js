@@ -9,6 +9,7 @@ const connectionObject = {
 
 const db = pgp(connectionObject);
 
+// Look into db.connect / Make sure it's necessary
 db.connect()
   .then(connectionInformation => {
     console.log("Connected to DB");

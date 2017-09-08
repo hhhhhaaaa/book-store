@@ -7,9 +7,13 @@ module.exports = (function() {
 
   const makeConfig = () => {
     if (getEnv() === 'development') {
-      console.log("Entering Development.");
+      console.log("Entering Development");
       require('dotenv').config({path: __dirname + '/../../.env'});
+    } else if (getEnv() === 'test') {
+      console.log("Entering Test");
+      require('../../test/helpers/testing-setup');
     }
+    // Dotenv reads env file and puts in on the env.
 
     config = {
       db: {
