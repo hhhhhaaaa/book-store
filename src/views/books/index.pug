@@ -4,18 +4,6 @@ block content
   ul.flex.flex-column.books-list.flex-full
     each book in books
       li: a(href='/books/' + book.id) #{book.title}
-  if pageCount > 1
-    div.flex.pagination
-      if currentPage > 1
-        a(href='/books/') &laquo;
-      - for (var i = 1; i <= pageCount; i++) {
-        if currentPage == i
-          #{i}
-        else  
-          a(href='/books/?page=' + i) #{i}
-      - }    
-      if currentPage !== pageCount
-        a(href='/books/?page=' + pageCount) &raquo;
           
                 
        
