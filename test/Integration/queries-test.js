@@ -14,7 +14,7 @@ describe('Testing Queries', function() {
           author: 'J.K. Rowling',
           genre: 'Magic'
         })
-        .then(newBook => {
+        .then(function(newBook) {
           expect(newBook.title).to.eql('Harry Potter');
           expect(newBook.author).to.eql('J.K. Rowling');
           expect(newBook.genre).to.eql('Magic');
@@ -24,7 +24,7 @@ describe('Testing Queries', function() {
   describe('GetAll', function() {
     it('Should get all the books from the database', function() {
       return books.getAll()
-        .then(books => {
+        .then(function(books) {
           expect(books).to.eql([{
             id: 1,
             title: 'Lon Chaney: A Thousand Faces',
@@ -61,7 +61,7 @@ describe('Testing Queries', function() {
           author: 'J.K. Rowling',
           genre: 'Magic'
         })
-        .then(book => {
+        .then(function(book) {
           expect(book).to.eql({
             id: 5,
             title: 'Harry Potter',
@@ -78,7 +78,7 @@ describe('Testing Queries', function() {
           author: 'J.K. Bird',
           genre: 'Math'
         })
-        .then(updatedBook => {
+        .then(function(updatedBook) {
           expect(updatedBook).to.eql({
             id: 5,
             title: 'Harry Bother',
@@ -91,7 +91,7 @@ describe('Testing Queries', function() {
   describe('searchByColumn', function() {
     it('Should through the database for a term and return the results', function() {
       return books.search("Harry")
-        .then(matchingBooks => {
+        .then(function(matchingBooks) {
           expect(matchingBooks).to.eql([{
             id: 5,
             title: 'Harry Bother',
@@ -104,7 +104,7 @@ describe('Testing Queries', function() {
   describe('DeleteById', function() {
     it('Should delete a book from the database', function() {
       return books.deleteById(5)
-        .then(() => {
+        .then(function() {
           books.getById(5)
             .then(book => {
               expect(book).to.eql(null);
