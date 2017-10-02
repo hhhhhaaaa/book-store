@@ -106,7 +106,7 @@ describe('Testing Queries', function() {
       return books.deleteById(5)
         .then(function() {
           books.getById(5)
-            .then(book => {
+            .then(function(book) {
               expect(book).to.eql(null);
             });
         });
