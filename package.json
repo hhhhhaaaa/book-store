@@ -21,9 +21,13 @@
   },
   "homepage": "https://github.com/hhhhhaaaa/book-store#readme",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.17.2",
+    "connect-pg-simple": "^4.2.1",
+    "cookie-parser": "^1.4.3",
     "dotenv": "^4.0.0",
     "express": "^4.15.4",
+    "express-session": "^1.15.5",
     "method-override": "^2.3.9",
     "pg-promise": "^6.5.1",
     "pug": "^2.0.0-rc.3"
