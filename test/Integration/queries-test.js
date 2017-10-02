@@ -4,7 +4,7 @@ const books = require('../../src/models/books');
 const dbHelper = require('../helpers/db');
 
 describe('Testing Queries', function() {
-  before('Reset the Database', () => {
+  before('Reset the Database', function() {
     return dbHelper.initDB();
   });
   describe('Add', function() {
