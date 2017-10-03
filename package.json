@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha 'test/**/*.js'",
+    "test": "NODE_ENV=test mocha --require babel-polyfill --compilers js:babel-register 'test/**/*.js'",
     "start": "NODE_ENV=development node src/server.js",
     "start:dev": "NODE_ENV=development nodemon src/server.js",
     "db:reset": "dropdb bookstore_development; createdb bookstore_development; psql bookstore_development < src/models/db/schema/schema.sql; psql bookstore_development < src/models/db/schema/load-data.sql",
@@ -33,6 +33,9 @@
     "pug": "^2.0.0-rc.3"
   },
   "devDependencies": {
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-register": "^6.26.0",
     "chai": "^4.1.1",
     "chai-http": "^3.0.0",
     "mocha": "^3.5.0",
